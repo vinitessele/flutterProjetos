@@ -1,0 +1,2 @@
+D:/projetosFlutter/Projetos2025/app_firebase2/android/app/.cxx/Debug/4k724830/x86_64/CMakeFiles/edit_cache.dir
+D:/projetosFlutter/Projetos2025/app_firebase2/android/app/.cxx/Debug/4k724830/x86_64/CMakeFiles/rebuild_cache.dir
