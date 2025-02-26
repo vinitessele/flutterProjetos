@@ -5,7 +5,16 @@ import 'package:url_launcher/url_launcher.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
+  await Firebase.initializeApp(
+// Replace with actual values
+    options: const FirebaseOptions(
+      apiKey: "AIzaSyBXhVHxCsVU3lyN73JCzAOicnuXx2RLWF8",
+      appId: "1:822896731754:android:f35cee6525c26152e90c13",
+      messagingSenderId: "822896731754",
+      projectId: "flutter-7cfc5",
+      databaseURL: 'https://flutter-7cfc5-default-rtdb.firebaseio.com',
+    ),
+  );
   runApp(MyApp());
 }
 
@@ -18,8 +27,8 @@ class _MyAppState extends State<MyApp> {
   final DatabaseReference _database = FirebaseDatabase.instance.ref();
   String? _versao;
   static const String _versaoApp = '1.1.0';
-  final Uri _url = Uri.parse('https://1drv.ms/f/c/26724769b88ecd95/EgBlSjPLk6xIvKN4dZOjBysB4vI0u-I2Det0HlbWCpvp6Q?e=Tsksvm');
-
+  final Uri _url = Uri.parse(
+      'https://1drv.ms/f/c/26724769b88ecd95/EgBlSjPLk6xIvKN4dZOjBysB4vI0u-I2Det0HlbWCpvp6Q?e=Tsksvm');
 
   @override
   void initState() {
@@ -35,21 +44,20 @@ class _MyAppState extends State<MyApp> {
   }
 
   // Função para abrir o link do Google Drive
-Future<void> _baixarAPK() async {
-  try {
-
-    if (await canLaunchUrl(_url)) {
-      await launchUrl(
-        _url,
-        mode: LaunchMode.externalApplication, // Abre no navegador padrão
-      );
-    } else {
-      throw 'Não foi possível abrir o link';
+  Future<void> _baixarAPK() async {
+    try {
+      if (await canLaunchUrl(_url)) {
+        await launchUrl(
+          _url,
+          mode: LaunchMode.externalApplication, // Abre no navegador padrão
+        );
+      } else {
+        throw 'Não foi possível abrir o link';
+      }
+    } catch (e) {
+      print('---> Erro ao abrir o link: $e');
     }
-  } catch (e) {
-    print('---> Erro ao abrir o link: $e');
   }
-}
 
   @override
   Widget build(BuildContext context) {

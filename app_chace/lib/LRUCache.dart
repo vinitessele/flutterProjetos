@@ -4,7 +4,6 @@ class LRUCache<K, V> {
   final List<K> _order = [];
 
   LRUCache(this.maxSize);
-
   // Adiciona ou atualiza um item no cache
   void put(K key, V value) {
     if (_cache.length >= maxSize) {
@@ -13,7 +12,6 @@ class LRUCache<K, V> {
     _cache[key] = value;
     _order.add(key);
   }
-
   // Obtém um item do cache
   V? get(K key) {
     if (_cache.containsKey(key)) {
@@ -23,7 +21,6 @@ class LRUCache<K, V> {
     }
     return null;  
   }
-
   // Remove o item menos recentemente usado
   void _removeLeastRecentlyUsed() {
     final leastUsedKey = _order.removeAt(0); 
