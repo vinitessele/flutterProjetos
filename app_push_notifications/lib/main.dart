@@ -4,9 +4,17 @@ import 'package:flutter/material.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
+  await Firebase.initializeApp(
+    options: const FirebaseOptions(
+      apiKey: "AIzaSyAu1zFpSBRSzCR8WTEoB2jJ5B7QKIn-DVo",
+      appId: "1:32059787177:android:16e0e248b7d834a0ffe6b8",
+      messagingSenderId: "32059787177",
+      projectId: "pushnotification2-3d423",
+    ),
+  );
   runApp(MyApp());
 }
+
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {

@@ -18,7 +18,7 @@ dependencies {
 android {
     namespace = "com.example.app_push_notifications"
     compileSdk = flutter.compileSdkVersion
-    ndkVersion = flutter.ndkVersion
+    ndkVersion = "27.2.12479018"
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11

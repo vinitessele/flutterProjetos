@@ -6,11 +6,11 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: const FirebaseOptions(
-      apiKey: "AIzaSyBXhVHxCsVU3lyN73JCzAOicnuXx2RLWF8",
-      appId: "1:822896731754:android:f35cee6525c26152e90c13",
-      messagingSenderId: "822896731754",
-      projectId: "flutter-7cfc5",
-      databaseURL: 'https://flutter-7cfc5-default-rtdb.firebaseio.com',
+      apiKey: "xxxxxxx",
+      appId: "xxxxxxx",
+      messagingSenderId: "xxxxxxx",
+      projectId: "xxxxxxx",
+      databaseURL: "xxxxxxx",
     ),
   );
   runApp(MyApp());
@@ -24,6 +24,7 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   final DatabaseReference _database = FirebaseDatabase.instance.ref();
   String? _versao;
+  TextEditingController _versaoController = TextEditingController();
 
   @override
   void initState() {
@@ -39,15 +40,45 @@ class _MyAppState extends State<MyApp> {
     });
   }
 
+  // Função para atualizar a versão no Firebase
+  Future<void> _atualizarVersao() async {
+    if (_versaoController.text.isNotEmpty) {
+      await _database.child('versao').set(_versaoController.text);
+      _getVersao(); 
+      _versaoController.clear(); 
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(title: Text("Versão do Firebase")),
-        body: Center(
-          child: _versao == null
-              ? CircularProgressIndicator()
-              : Text("Versão no Firebase: $_versao"),
+        body: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              _versao == null
+                  ? CircularProgressIndicator()
+                  : Text("Versão no Firebase: $_versao"),
+              SizedBox(height: 20),
+              TextField(
+                controller: _versaoController,
+                decoration: InputDecoration(
+                  labelText: "Nova versão",
+                  border: OutlineInputBorder(),
+                ),
+                keyboardType: TextInputType.text,
+              ),
+              SizedBox(height: 20),
+              ElevatedButton(
+                onPressed: _atualizarVersao,
+                child: Text("Atualizar Versão"),
+              ),
+            ],
+          ),
         ),
       ),
     );
