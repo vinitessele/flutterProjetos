@@ -50,7 +50,6 @@ class _ChatPageState extends State<ChatPage> {
         onMessageReceived(msg);
       }
     }, onError: (error) {
-      // Trate o erro
       print("WebSocket error: $error");
     });
   }
@@ -69,6 +68,7 @@ class _ChatPageState extends State<ChatPage> {
       createdAt: DateTime.now().millisecondsSinceEpoch,
       metadata: {
         'senderName': otherUser.firstName,
+        'hora':DateTime.now().millisecondsSinceEpoch.toString()
       },
     );
     _addMessage(newMessage);
@@ -119,8 +119,9 @@ class _ChatPageState extends State<ChatPage> {
             child: Chat(
               messages: _messages,
               user: me,
-              theme: DefaultChatTheme(),
+              showUserAvatars: true,
               showUserNames: true,
+              timeFormat: Text(DateTime.now()),
               onSendPressed: _handleSendPressed,
             ),
           ),
