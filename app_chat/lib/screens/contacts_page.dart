@@ -1,6 +1,5 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
-import 'package:flutter_chat_ui/flutter_chat_ui.dart';
 import 'chat_page.dart';
 
 class ContactsPage extends StatefulWidget {
@@ -52,7 +51,7 @@ class _ContactsPageState extends State<ContactsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Anonymous Chat'),
+        title: const Text('Meu Chat'),
         backgroundColor: Colors.deepPurple,
         actions: [
           IconButton(

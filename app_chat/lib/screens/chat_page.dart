@@ -18,7 +18,7 @@ class ChatPage extends StatefulWidget {
 }
 
 class _ChatPageState extends State<ChatPage> {
-  final socket = WebSocket(Uri.parse('ws://localhost:8765'));
+  final socket = WebSocket(Uri.parse('ws://10.200.75.42:8765'));
   final List<types.Message> _messages = [];
   final TextEditingController _messageController = TextEditingController();
   late types.User otherUser;
@@ -121,7 +121,6 @@ class _ChatPageState extends State<ChatPage> {
               user: me,
               showUserAvatars: true,
               showUserNames: true,
-              timeFormat: Text(DateTime.now()),
               onSendPressed: _handleSendPressed,
             ),
           ),
