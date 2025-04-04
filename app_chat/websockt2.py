@@ -23,9 +23,9 @@ async def chat(websocket, path):
         # Log quando um cliente se desconecta
         print(f"Cliente desconectado: {cliente_id}")
 
-start_server = websockets.serve(chat, "10.200.74.57", 8765)
+start_server = websockets.serve(chat, "10.200.74.225", 8765)
 
-print("Servidor WebSocket iniciado em ws://10.200.74.57:8765")
+print("Servidor WebSocket iniciado em ws://10.200.74.225:8765")
 
 asyncio.get_event_loop().run_until_complete(start_server)
 asyncio.get_event_loop().run_forever()
